@@ -1,0 +1,9 @@
+vendor/
+composer.lock
+.phpunit.result.cache
+.env
+error.log
+autenticacao/
+api\ gateway/
+monolitico/
+
