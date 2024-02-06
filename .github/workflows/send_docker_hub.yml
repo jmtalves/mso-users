@@ -50,7 +50,7 @@ jobs:
       - name: Tag and Push PHP-FPM image
         working-directory: ./
         run: |
-          docker tag apigateway_php-fpm:latest jmtalves/mso-user:php-fpm
+          docker tag mso-users_php-fpm:latest jmtalves/mso-user:php-fpm
           docker build  -f ./phpdocker/php-fpm/Dockerfile -t jmtalves/mso-user:php-fpm . 
           docker push jmtalves/mso-user:php-fpm
         
