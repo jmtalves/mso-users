@@ -5,7 +5,6 @@ namespace Libraries;
 use Libraries\Encrypt;
 use Libraries\Response;
 
-
 class Request
 {
     /**
