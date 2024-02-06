@@ -4,8 +4,7 @@ use Libraries\Response;
 
 
 class Start
-{
-    
+{   
     /**
      * init
      *
