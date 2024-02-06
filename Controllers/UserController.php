@@ -2,7 +2,6 @@
 
 namespace Controllers;
 
-
 use Models\User;
 use Libraries\Response;
 use Libraries\Request;
@@ -11,7 +10,7 @@ class UserController
 {
     /**
      * index
-     * @param array $params params get 
+     * @param array $params params get
      *
      * @return void
      */
@@ -21,7 +20,7 @@ class UserController
         $filter = [];
         if ($data["type"] == 1) {
             $filter["iduser"] = $data["user_id"];
-        } else if (!empty($params[0])) {
+        } elseif (!empty($params[0])) {
             if (is_numeric($params[0])) {
                 $filter["iduser"] = $params[0];
             } else {
@@ -29,8 +28,8 @@ class UserController
             }
         }
         $columns = "iduser, name, email, type";
-        if($data['auth']){
-            $columns .= ", password"; 
+        if ($data['auth']) {
+            $columns .= ", password";
         }
         $users = User::find($columns, $filter);
         if (empty($users)) {
@@ -45,8 +44,7 @@ class UserController
      * @return void
      */
     public function insert()
-    {/*$jwt = \Libraries\Encrypt::encryptJwt("a4b728c805a50b7d81115ce5d10a39d8-1-0");
-            var_dump($jwt);die();*/
+    {
         Request::verifyToken([0]);
         $post = Request::getPostParams();
         if (empty($post['name']) || empty($post['email']) || empty($post['password']) || !isset($post['type'])) {
