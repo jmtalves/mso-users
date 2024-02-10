@@ -29,7 +29,7 @@ class UserController
         }
         $columns = "iduser, name, email, type";
         if ($data['auth']) {
-            $columns .= ", password";
+            $columns .= ", password, apikey";
         }
         $users = User::find($columns, $filter);
         if (empty($users)) {
