@@ -2,8 +2,6 @@
 
 namespace Libraries;
 
-
-
 use Enqueue\AmqpLib\AmqpConnectionFactory;
 use Enqueue\AmqpLib\AmqpContext;
 
@@ -12,7 +10,6 @@ use Enqueue\AmqpLib\AmqpContext;
  */
 class MessageBroker
 {
-
     /**
      * sendMessage
      * @param string $event
@@ -23,7 +20,9 @@ class MessageBroker
         $mbroker_ip = getenv('HOST_MESSAGEBROKER');
         $mbroker_user = getenv('USER_MESSAGEBROKER');
         $mbroker_pass = getenv('PASS_MESSAGEBROKER');
-        $connectionFactory = new AmqpConnectionFactory('amqp://' . $mbroker_user . ':' . $mbroker_pass . '@' . $mbroker_ip . ':5672');
+        $connectionFactory = new AmqpConnectionFactory(
+            'amqp://' . $mbroker_user . ':' . $mbroker_pass . '@' . $mbroker_ip . ':5672'
+        );
         $context = $connectionFactory->createContext();
         $topic = $context->createTopic($event);
         $producer = $context->createProducer();
@@ -41,7 +40,9 @@ class MessageBroker
         $mbroker_ip = getenv('HOST_MESSAGEBROKER');
         $mbroker_user = getenv('USER_MESSAGEBROKER');
         $mbroker_pass = getenv('PASS_MESSAGEBROKER');
-        $connectionFactory = new AmqpConnectionFactory('amqp://' . $mbroker_user . ':' . $mbroker_pass . '@' . $mbroker_ip . ':5672');
+        $connectionFactory = new AmqpConnectionFactory(
+            'amqp://' . $mbroker_user . ':' . $mbroker_pass . '@' . $mbroker_ip . ':5672'
+        );
         $context = $connectionFactory->createContext();
         $topic = $context->createTopic($event);
         $consumer = $context->createConsumer($topic);
