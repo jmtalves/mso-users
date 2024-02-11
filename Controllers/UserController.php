@@ -56,7 +56,15 @@ class UserController
         }
         $response = $this->save($post);
         if ($response) {
-            MessageBroker::sendMessage("userCreate", ["iduser" => $response, "name" => $post['name'], "email" => $post['email']]);
+            MessageBroker::sendMessage(
+                "userCreate",
+                [
+                    "iduser" => $response,
+                    "name" => $post['name'],
+                    "email" => $post['email']
+                ]
+            );
+            
             Response::sendResponse(200, ["msg" => "Inserted Success", "id" => $response]);
         } else {
             Response::sendResponse(422, ["msg" => "Error on insert record"]);
@@ -82,7 +90,15 @@ class UserController
             $post = array_merge((array)$us[0], $post);
             $response = $this->save($post, $us[0]->iduser);
             if ($response) {
-                MessageBroker::sendMessage("userUpdate", ["iduser" => $us[0]->iduser, "name" => $post['name'], "email" => $post['email']]);
+                MessageBroker::sendMessage(
+                    "userUpdate",
+                    [
+                        "iduser" => $us[0]->iduser,
+                        "name" => $post['name'],
+                        "email" => $post['email']
+                    ]
+                );
+                
                 Response::sendResponse(200, ["msg" => "Updated Success"]);
             } else {
                 Response::sendResponse(422, ["msg" => "Error on updated record"]);
