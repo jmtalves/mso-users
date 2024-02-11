@@ -45,6 +45,7 @@ class MessageBroker
         $context = $connectionFactory->createContext();
         $topic = $context->createTopic($event);
         $consumer = $context->createConsumer($topic);
+        /** @noinspection PhpStatementHasEmptyBodyInspection */
         while (true) {
             $message = $consumer->receive();
             if ($message !== null) {
