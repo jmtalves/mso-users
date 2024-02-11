@@ -18,7 +18,7 @@ class MessageBroker
      * @param string $event
      * @param array $data
      */
-    public function sendMessage(string $event, array $data)
+    public static function sendMessage(string $event, array $data)
     {
         $mbroker_ip = getenv('HOST_MESSAGEBROKER');
         $mbroker_user = getenv('USER_MESSAGEBROKER');
@@ -36,7 +36,7 @@ class MessageBroker
      * @param string $event
      * @param string $name_func
      */
-    public function processMessage(string $event, string $name_func)
+    public static function processMessage(string $event, string $name_func)
     {
         $mbroker_ip = getenv('HOST_MESSAGEBROKER');
         $mbroker_user = getenv('USER_MESSAGEBROKER');
