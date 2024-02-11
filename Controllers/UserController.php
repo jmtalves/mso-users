@@ -64,7 +64,6 @@ class UserController
                     "email" => $post['email']
                 ]
             );
-            
             Response::sendResponse(200, ["msg" => "Inserted Success", "id" => $response]);
         } else {
             Response::sendResponse(422, ["msg" => "Error on insert record"]);
@@ -98,7 +97,6 @@ class UserController
                         "email" => $post['email']
                     ]
                 );
-                
                 Response::sendResponse(200, ["msg" => "Updated Success"]);
             } else {
                 Response::sendResponse(422, ["msg" => "Error on updated record"]);
